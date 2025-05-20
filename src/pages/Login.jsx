@@ -20,9 +20,10 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:5000/login', formData);
       console.log('Авторизация успешна:', response.data);
-
-      localStorage.setItem('token', response.data.userId);
-
+console.log('Ответ сервера при логине:', response.data);
+      localStorage.setItem('token', response.data.token);
+    const savedToken = localStorage.getItem('token');
+    console.log('Токен, сохранённый в localStorage:', savedToken);
       navigate('/application-form');
     } catch (error) {
       console.error('Ошибка при входе:', error.response?.data || error.message);

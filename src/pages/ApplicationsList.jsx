@@ -24,7 +24,11 @@ const ApplicationsList = () => {
     if (!window.confirm('Удалить эту заявку?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/applications/${id}`);
+      await axios.delete(`http://localhost:5000/applications/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setApplications((prev) => prev.filter((app) => app.id !== id));
     } catch (error) {
       alert('Ошибка при удалении заявки');
@@ -34,8 +38,17 @@ const ApplicationsList = () => {
 
   useEffect(() => {
     const fetchApplications = async () => {
+      if (!token) {
+        setLoading(false);
+        return;
+      }
+
       try {
-        const response = await axios.get('http://localhost:5000/applications');
+        const response = await axios.get('http://localhost:5000/applications', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setApplications(response.data);
       } catch (error) {
         console.error('Ошибка при получении заявок:', error);
@@ -45,7 +58,7 @@ const ApplicationsList = () => {
     };
 
     fetchApplications();
-  }, []);
+  }, [token]);
 
   const filteredApplications =
     filterStatus === 'all'

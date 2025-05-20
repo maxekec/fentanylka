@@ -37,8 +37,18 @@ const ApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Пожалуйста, войдите в систему, чтобы отправить заявку');
+      return;
+    }
+
     try {
-      await axios.post('http://localhost:5000/applications', formData);
+      await axios.post('http://localhost:5000/applications', formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       alert('Заявка успешно отправлена!');
       setFormData({
         fullName: '',
