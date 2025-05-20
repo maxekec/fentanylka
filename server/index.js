@@ -85,7 +85,6 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// Логин с генерацией JWT
 app.post('/login', async (req, res) => {
   const { login, password } = req.body;
 
@@ -105,7 +104,6 @@ app.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Неверный пароль' });
     }
 
-    // Генерируем JWT токен
     const token = jwt.sign(
       { userId: user.id, login: user.login },
       JWT_SECRET,
@@ -125,7 +123,6 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Middleware для проверки токена (пример использования для защищенных маршрутов)
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
 
@@ -144,7 +141,6 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// Пример защищённого маршрута (для заявок, где нужен токен)
 app.post('/applications', authMiddleware, async (req, res) => {
   try {
     const {
@@ -172,8 +168,6 @@ app.post('/applications', authMiddleware, async (req, res) => {
     res.status(500).json({ message: 'Ошибка сервера' });
   }
 });
-
-// Другие маршруты (например, получение заявок, обновление, удаление) можно тоже защитить через authMiddleware
 
 app.get('/', (req, res) => {
   res.send('Сервер запущен и работает!');
