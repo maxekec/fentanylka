@@ -1,0 +1,97 @@
+.admin-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 16px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+}
+
+.admin-header {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.admin-btn {
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.login-btn {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.login-btn:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.register-btn {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.register-btn:hover {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.logout-btn {
+  border-color: #dc3545;
+  color: #dc3545;
+}
+
+.logout-btn:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.admin-username {
+  font-weight: bold;
+  color: #333;
+}
+
+.admin-title {
+  margin-top: 80px;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  color: #222;
+}
+
+.admin-nav-btn {
+  margin-bottom: 1rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-nav-btn:hover {
+  background-color: #0056b3;
+}
+
+.admin-content {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  margin-top: 20px;
+}
